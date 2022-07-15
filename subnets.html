@@ -465,12 +465,13 @@ li		{
 }
 
 .label		{
-  font-size: 60%;
+  font-size: 70%;
 }
 
 .calc {
   font-size: 80%;
   border-collapse: collapse; 
+  margin: auto;
 }
 .calc td {
  border: 1px solid black;
@@ -487,11 +488,9 @@ li		{
 
 .maskSpan {
   background-color: #cccccc;
-  text-align: right;
 }
 .maskSpanJoinable {
   background-color: #cccccc;
-  text-align: right;
  cursor: hand;
 }
 
@@ -511,25 +510,10 @@ li		{
 <p>Credit: <a href=https://github.com/davidc/subnets">GitHub - DavidC's Subnet Calculator</a></p>
 <p>Enter the network you wish to subnet:</p>
 
-<form name="calc" onsubmit="updateNetwork(); return false;">
 
-<table cellspacing="0">
-<tr>
-<td class="label">Network Address</td>
-<td class="label"> Mask bits</td>
-</tr>
-<tr>
-<td><input type="text" name="network" size="15" maxlength="15" value="192.168.0.0"></td>
-<td>/ <input type="text" name="netbits" size="2" maxlength="2" value="16"></td>
-<td><input type="submit" value="Update">
-<input type="button" value="Reset" onclick="if (confirm('This will reset all subnet divisions you have made. Proceed?')) startOver();">
-</td>
-</tr>
-</table>
-</form>
 
 <p>Click below to split and join subnets.<br>
-If you wish to save this subnetting for later, bookmark <a href="subnets.html" id="saveLink">this hyperlink</a>.</p>
+If you wish to save this subnetting for later, bookmark  <a href="subnets.html" id="saveLink">this hyperlink</a>.</p>
 
 <p>Azure reserves the first four and last IP address for a total of 5 IP addresses within each subnet.<br>
 For example, the IP address range of 192.168.0.0/24 has the following reserved addresses:</p>
@@ -540,10 +524,24 @@ For example, the IP address range of 192.168.0.0/24 has the following reserved a
   <li>192.168.0.2, 192.168.0.3 : Reserved by Azure to map the Azure DNS IPs to the VNet space</li>
   <li>192.168.0.255 : Network broadcast address.</li>
 </ul>
-
 <br>
+<form name="calc" onsubmit="updateNetwork(); return false;">
+  <table cellspacing="0" style="margin: auto;">
+  <tr>
+  <td class="label">Network Address</td>
+  <td class="label"> Mask bits</td>
+  </tr>
+  <tr>
+  <td><input type="text" name="network" size="15" maxlength="15" value="192.168.0.0"></td>
+  <td>/ <input type="text" name="netbits" size="2" maxlength="2" value="16"></td>
+  <td><input type="submit" value="Update">
+  <input type="button" value="Reset" onclick="if (confirm('This will reset all subnet divisions you have made. Proceed?')) startOver();">
+  <input type="button" value="Bookmark" disabled>
+  </td>
+  </tr>
+  </table>
+  </form>
 <hr noshade color="black" size="1">
-<br>
 
 <table class="calc" cellspacing="1" cellpadding="4">
 <colgroup>
