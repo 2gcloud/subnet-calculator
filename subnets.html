@@ -510,7 +510,6 @@ li		{
 <td>
 
 <h1>Azure Subnet Calculator</h1>
-<p>Credit: <a href=https://github.com/davidc/subnets"> DavidC's Subnet Calculator </a></p>
 <p>Enter the network you wish to subnet:</p>
 
 <form name="calc" onsubmit="updateNetwork(); return false;">
@@ -521,7 +520,7 @@ li		{
 <td class="label">Mask bits</td>
 </tr>
 <tr>
-<td><input type="text" name="network" size="15" maxlength="15" value="10.0.0.0"></td>
+<td><input type="text" name="network" size="15" maxlength="15" value="192.168.0.0"></td>
 <td>/<input type="text" name="netbits" size="2" maxlength="2" value="16"></td>
 <td><input type="submit" value="Update">
 <input type="button" value="Reset" onclick="if (confirm('This will reset all subnet divisions you have made. Proceed?')) startOver();">
@@ -534,7 +533,7 @@ li		{
 <input type="checkbox" id="cb_netmask" onclick="toggleColumn(this)"><label for="cb_netmask">Netmask</label>
 <input type="checkbox" id="cb_range" checked onclick="toggleColumn(this)"><label for="cb_range">Range of addresses</label>
 <input type="checkbox" id="cb_useable" checked onclick="toggleColumn(this)"><label for="cb_useable">Useable IPs</label>
-<input type="checkbox" id="cb_hosts" checked onclick="toggleColumn(this)"><label for="cb_hosts">Hosts</label>
+<input type="checkbox" id="cb_hosts" checked onclick="toggleColumn(this)"><label for="cb_hosts">Hosts in Azure</label>
 <input type="checkbox" id="cb_divide" checked onclick="toggleColumn(this)"><label for="cb_divide">Divide</label>
 <input type="checkbox" id="cb_join" checked onclick="toggleColumn(this)"><label for="cb_join">Join</label>
 </p>
@@ -544,20 +543,20 @@ li		{
 If you wish to save this subnetting for later, bookmark <a href="subnets.html" id="saveLink">this hyperlink</a>.</p>
 
 <p>Azure reserves the first four and last IP address for a total of 5 IP addresses within each subnet.<br>
-For example, the IP address range of 192.168.1.0/24 has the following reserved addresses:</p>
+For example, the IP address range of 192.168.0.0/24 has the following reserved addresses:</p>
 
 <ul>
-  <li>192.168.1.0 : Network address</li>
-  <li>192.168.1.1 : Reserved by Azure for the default gateway</li>
-  <li>192.168.1.2, 192.168.1.3 : Reserved by Azure to map the Azure DNS IPs to the VNet space</li>
-  <li>192.168.1.255 : Network broadcast address.</li>
+  <li>192.168.0.0 : Network address</li>
+  <li>192.168.0.1 : Reserved by Azure for the default gateway</li>
+  <li>192.168.0.2, 192.168.0.3 : Reserved by Azure to map the Azure DNS IPs to the VNet space</li>
+  <li>192.168.0.255 : Network broadcast address.</li>
 </ul>
 
 <br>
 <hr noshade color="black" size="1">
 <br>
 
-<table class="calc" cellspacing="0" cellpadding="2">
+<table class="calc" cellspacing="1" cellpadding="4">
 <colgroup>
 <col id="col_subnet">
 <col id="col_netmask" style="display: none">
@@ -573,20 +572,16 @@ For example, the IP address range of 192.168.1.0/24 has the following reserved a
 <td>Netmask</td>
 <td>Range of addresses</td>
 <td>Useable IPs</td>
-<td>Hosts</td>
+<td>Hosts in Azure</td>
 <td>Divide</td>
 <td id="joinHeader">Join</td>
 </tr>
 </thead>
 <tbody id="calcbody">
-<!--tr>
-<td>130.94.203.0/24</td>
-<td>130.94.203.0 - 130.94.203.255</td>
-<td>130.94.203.1 - 130.94.203.254 (254)</td>
-<td>Divide</td>
-</tr-->
 </tbody>
 </table>
-
+<div style = "height: 10%; bottom: 0px; position: absolute;">
+  <p>Credit: <a href=https://github.com/davidc/subnets">GitHub - DavidC's Subnet Calculator</a></p>
+<div>
 </body>
 </html>
