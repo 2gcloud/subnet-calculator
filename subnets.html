@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Visual Subnet Calculator</title>
+<title>Azure Subnet Calculator</title>
 <script language="javascript" type="text/javascript">
 <!--
 
@@ -158,11 +158,11 @@ function createRow(calcbody, node, address, mask, labels, depth)
 
     var addressFirst = address;
     var addressLast = subnet_last_address(address, mask);
-    var useableFirst = address + 1;
+    var useableFirst = address + 4;
     var useableLast = addressLast - 1;
     var numHosts;
     var addressRange;
-    var usaebleRange;
+    var usableRange;
 
     if (mask == 32) {
       addressRange = inet_ntoa(addressFirst);
@@ -510,7 +510,7 @@ li		{
 <td>
 
 <h1>Azure Subnet Calculator</h1>
-
+<p>Credit: <a href=https://github.com/davidc/subnets"> DavidC's Subnet Calculator </a></p>
 <p>Enter the network you wish to subnet:</p>
 
 <form name="calc" onsubmit="updateNetwork(); return false;">
@@ -521,7 +521,7 @@ li		{
 <td class="label">Mask bits</td>
 </tr>
 <tr>
-<td><input type="text" name="network" size="15" maxlength="15" value="192.168.0.0"></td>
+<td><input type="text" name="network" size="15" maxlength="15" value="10.0.0.0"></td>
 <td>/<input type="text" name="netbits" size="2" maxlength="2" value="16"></td>
 <td><input type="submit" value="Update">
 <input type="button" value="Reset" onclick="if (confirm('This will reset all subnet divisions you have made. Proceed?')) startOver();">
