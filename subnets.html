@@ -7,6 +7,7 @@
 
 var curNetwork = 0;
 var curMask = 0;
+var curComment = "";
 
 function updateNetwork()
 {
@@ -151,8 +152,11 @@ function createRow(calcbody, node, address, mask, labels, depth)
   else {
     var newRow = document.createElement('TR');
     calcbody.appendChild(newRow);
-
-    /* subnet address */
+    /* Subnet Name*/
+    var newCell = document.createElement('TD');
+    newCell.appendChild(document.createElement("Input"));
+    newRow.appendChild(newCell);
+    /* Subnet Address */
     var newCell = document.createElement('TD');
     newCell.appendChild(document.createTextNode(inet_ntoa(address)+'/'+mask));
     newRow.appendChild(newCell);
@@ -559,6 +563,7 @@ For example, the IP address range of 192.168.0.0/24 has the following reserved a
 
 <table class="calc" cellspacing="1" cellpadding="4">
 <colgroup>
+<col id ="col_subnetname">
 <col id="col_subnet">
 <col id="col_netmask" style="display: none">
 <col id="col_range">
@@ -569,6 +574,7 @@ For example, the IP address range of 192.168.0.0/24 has the following reserved a
 </colgroup>
 <thead>
 <tr>
+<td>Subnet Name</td>
 <td>Subnet address</td>
 <td>Netmask</td>
 <td>Range of addresses</td>
